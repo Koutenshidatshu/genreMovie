@@ -13,8 +13,8 @@ import RxCocoa
 class GenreViewModel {
     private let provider: GenreProvider
     private let disposeBag = DisposeBag()
-    lazy var genreList: Observable<GenreListResponse> = genreListRelay.asObservable()
-    private let genreListRelay = PublishRelay<GenreListResponse>()
+    lazy var genreList: Observable<[Genre]> = genreListRelay.asObservable()
+    private let genreListRelay = PublishRelay<[Genre]>()
     
     init(provider: GenreProvider) {
         self.provider = provider
@@ -23,7 +23,7 @@ class GenreViewModel {
     func getGenre() {
         provider.get()
             .subscribe(onNext: { [weak self] value in
-                self?.genreListRelay.accept(value)
+                self?.genreListRelay.accept(value.genres)
                 }, onError: { _ in print("@@@  error ")})
             .disposed(by: disposeBag)
     }
