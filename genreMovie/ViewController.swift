@@ -7,14 +7,31 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
-
+    private let disposeBag = DisposeBag()
+    private let viewModel = GenreViewModelFactory.create()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        bindingViewModel()
+        
+        
     }
-
-
+    
+    
+    func bindingViewModel() {
+        viewModel.genreList
+            .asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: { [weak self] _ in
+//                self?.imageCollectionView.reloadData()
+            })
+            .disposed(by: disposeBag)
+        viewModel.getGenre()
+    }
+    
+    
 }
 
