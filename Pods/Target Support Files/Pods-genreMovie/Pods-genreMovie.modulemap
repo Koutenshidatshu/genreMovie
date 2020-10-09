@@ -1,0 +1,6 @@
+framework module Pods_genreMovie {
+  umbrella header "Pods-genreMovie-umbrella.h"
+
+  export *
+  module * { export * }
+}
