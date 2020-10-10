@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GenreViewController" customModule="genreMovie" customModuleProvider="target">
             <connections>
-                <outlet property="movieCollectionView" destination="ZEM-Ef-Q9n" id="e1L-WM-Oze"/>
+                <outlet property="movieCollectionView" destination="Gaw-Eh-Q4c" id="pOG-cw-Q7B"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,11 +18,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ZEM-Ef-Q9n">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Gaw-Eh-Q4c">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oUx-M0-bLo">
-                        <size key="itemSize" width="128" height="128"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YLv-N5-Ack">
+                        <size key="itemSize" width="200" height="300"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -31,10 +31,10 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="ZEM-Ef-Q9n" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7Hi-Tc-BY1"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ZEM-Ef-Q9n" secondAttribute="bottom" id="WPu-Pd-tVD"/>
-                <constraint firstItem="ZEM-Ef-Q9n" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="XV8-TW-nuT"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZEM-Ef-Q9n" secondAttribute="trailing" id="jRV-o4-u8W"/>
+                <constraint firstItem="Gaw-Eh-Q4c" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="JGY-Uc-pKL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Gaw-Eh-Q4c" secondAttribute="bottom" id="JXK-4H-1BF"/>
+                <constraint firstItem="Gaw-Eh-Q4c" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="dja-kj-dz0"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Gaw-Eh-Q4c" secondAttribute="trailing" id="vg3-cE-Smo"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="132" y="154"/>
