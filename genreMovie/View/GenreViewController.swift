@@ -43,15 +43,15 @@ class GenreViewController: UIViewController {
             {  _, item, cell in cell.setup(movie: item) }
             .disposed(by: disposeBag)
         
-//
-//        movieCollectionView.rx.itemSelected
-//        .map { $0.row }
-//        .bind(onNext: { [weak self] selectedItems in
-//            let vc = GenreViewController()
-//            vc.genre = self?.viewModel.didSelectGenre(itemAt: selectedItems)
-//            self?.navigationController?.pushViewController(vc, animated: true)
-//
-//        }).disposed(by: disposeBag)
+
+        movieCollectionView.rx.itemSelected
+        .map { $0.row }
+        .bind(onNext: { [weak self] selectedItems in
+            guard let movie = self?.viewModel.didSelectMovie(itemAt: selectedItems) else { return }
+            let vc = MovieDetailViewController(movie: movie)
+            self?.navigationController?.pushViewController(vc, animated: true)
+
+        }).disposed(by: disposeBag)
     }
 }
 
