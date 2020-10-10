@@ -45,10 +45,10 @@ class ViewController: UIViewController {
         collectionView.rx.itemSelected
         .map { $0.row }
         .bind(onNext: { [weak self] selectedItems in
-//            let vc = GenreViewController()
-//            guard let selected = self?.viewModel.didSelect(at: selectedItems) else { return }
-//            vc.genre = selected
-//            self?.navigationController?.pushViewController(vc, animated: true)
+            let vc = GenreViewController()
+            vc.genre = self?.viewModel.didSelectGenre(itemAt: selectedItems)
+            self?.navigationController?.pushViewController(vc, animated: true)
+            
         }).disposed(by: disposeBag)
     }
     

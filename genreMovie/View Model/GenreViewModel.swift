@@ -15,6 +15,7 @@ class GenreViewModel {
     private let disposeBag = DisposeBag()
     lazy var genreList: Observable<[Genre]> = genreListRelay.asObservable()
     private let genreListRelay = PublishRelay<[Genre]>()
+    private var genres: [Genre] = [Genre]()
     
     init(provider: GenreProvider) {
         self.provider = provider
@@ -24,8 +25,13 @@ class GenreViewModel {
         provider.get()
             .subscribe(onNext: { [weak self] value in
                 self?.genreListRelay.accept(value.genres)
+                self?.genres = value.genres
                 }, onError: { _ in print("@@@  error ")})
             .disposed(by: disposeBag)
+    }
+    
+    func didSelectGenre(itemAt index: Int) -> Genre {
+        return genres[index]
     }
 }
 

@@ -10,9 +10,11 @@ import UIKit
 
 class GenreViewController: UIViewController {
 
+    @IBOutlet weak var movieCollectionView: UICollectionView!
+    var genre: Genre?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    
+        title = genre?.name ?? ""
     }
 }
