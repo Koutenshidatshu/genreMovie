@@ -26,7 +26,6 @@ class MovieListViewModel {
             .subscribe(onNext: { [weak self] value in
                 self?.movieListRelay.accept(value.results)
                 self?.movies = value.results
-                print(value.results)
                 }, onError: { _ in print("@@@  error ")})
             .disposed(by: disposeBag)
     }

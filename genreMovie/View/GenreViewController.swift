@@ -42,6 +42,7 @@ class GenreViewController: UIViewController {
                                            cellType: MovieCollectionViewCell.self))
             {  _, item, cell in cell.setup(movie: item) }
             .disposed(by: disposeBag)
+        
 //
 //        movieCollectionView.rx.itemSelected
 //        .map { $0.row }
@@ -53,3 +54,14 @@ class GenreViewController: UIViewController {
 //        }).disposed(by: disposeBag)
     }
 }
+
+extension GenreViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let padding: CGFloat =  16
+        let collectionViewSize = collectionView.frame.size.width - padding
+        let collectionViewSizeH = collectionView.frame.size.height
+        return CGSize(width: collectionViewSize/2, height: collectionViewSizeH/2)
+    }
+}
+
