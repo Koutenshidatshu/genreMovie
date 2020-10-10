@@ -20,9 +20,17 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     func setup(movie: Movie) {
         movieLabel.text = movie.title
-        guard let posterPath = movie.posterPath else { return }
+        guard let posterPath = movie.posterPath else {
+            return posterImage.image = Image(named: "placeholder")
+        }
         guard let imageURL = URL(string: "https://image.tmdb.org/t/p/w500/" + posterPath) else { return }
-        loadImage(with: imageURL, into: posterImage)
+        let options = ImageLoadingOptions(
+            placeholder: UIImage(named: "placeholder"),
+            transition: .fadeIn(duration: 0.33)
+        )
+        
+        loadImage(with: imageURL, options: options, into: posterImage, progress: .none,
+                  completion: nil)
     }
 
 }
