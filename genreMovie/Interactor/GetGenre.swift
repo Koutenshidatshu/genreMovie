@@ -13,6 +13,7 @@ import RxCocoa
 protocol GetGenre {
     func get() -> Observable<Data>
     func discoverGenre(id: Int) -> Observable<Data>
+    func getDetail(movieId: Int) -> Observable<Data>
 }
 
 class GetGenreImpl: GetGenre {
@@ -35,6 +36,15 @@ class GetGenreImpl: GetGenre {
         return handleApiRequestFailed(data)
     }
     
+    func getDetail(movieId: Int) -> Observable<Data> {
+        let session = URLSession.shared
+        let data = session.rx.response(request: requestMovieDetailUrl(id: movieId))
+            .map { (_, data) in
+                return data
+        }.retry(2)
+        return handleApiRequestFailed(data)
+    }
+    
     private func requestUrl() -> URLRequest {
         let url = URL(string: ApiPath().path + "genre/movie/list?api_key=\(apiKey)&language=en-US")!
         var urlRequest = URLRequest(url: url)
@@ -45,7 +55,17 @@ class GetGenreImpl: GetGenre {
     
     private func requestDiscoverUrl(id: Int) -> URLRequest {
         
-        let url = URL(string: ApiPath().path + "discover/movie?api_key=\(apiKey)&language=en-US&sort_by=popularity.asc&include_adult=false&include_video=false&page=1&with_genres=\(id)")!
+        let url = URL(string: ApiPath().path + "discover/movie?api_key=\(apiKey)&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=\(id)")!
+        var urlRequest = URLRequest(url: url)
+        
+        urlRequest.httpMethod = "GET"
+        return urlRequest
+    
+    }
+    
+    private func requestMovieDetailUrl(id: Int) -> URLRequest {
+        
+        let url = URL(string: ApiPath().path + "movie/\(id)?api_key=\(apiKey)&language=en-US")!
         var urlRequest = URLRequest(url: url)
         
         urlRequest.httpMethod = "GET"
